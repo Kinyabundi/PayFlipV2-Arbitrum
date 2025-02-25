@@ -288,11 +288,12 @@ const Pay: React.FC<RoleSelectModalProps> = ({ isOpen, onClose, merchantAddress,
             console.log('Deposit request:', {
                 customer_key: customerKey,
                 amount: Number(price),
-                wallet_id: "67110003ef605dee0039e42f"
+                wallet_id: "67a335bc43babe060214fb44"
             });
 
             if (!response.ok) {
                 const responseBody = await response.json();
+                console.log(responseBody)
                 throw new Error(responseBody.message || 'Failed to make deposit');
             }
 
@@ -341,8 +342,8 @@ const Pay: React.FC<RoleSelectModalProps> = ({ isOpen, onClose, merchantAddress,
     }
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className='bg-[#B2BEB5] border rounded-xl flex items-center justify-center p-10 shadow-2xl w-full lg:w-1/3'>
+        <div className="fixed inset-0  bg-opacity-100 flex items-center justify-center z-50">
+            <div className='bg-gray-500 border rounded-xl flex items-center justify-center p-10 shadow-2xl w-full lg:w-1/3'>
                 <div className="w-full space-y-6">
                     <h1 className='flex items-center justify-center text-[#FFFFFF] font-semibold text-xl'>Make Payment</h1>
                     <div className="space-y-1">
@@ -362,7 +363,7 @@ const Pay: React.FC<RoleSelectModalProps> = ({ isOpen, onClose, merchantAddress,
                             <SelectTrigger >
                                 <SelectValue placeholder="Country" />
                             </SelectTrigger>
-                            <SelectContent className='bg-gray-100'>
+                            <SelectContent className='bg-gray-100 text-[#000]'>
                                 <SelectItem value='KE'>Kenya</SelectItem>
                                 <SelectItem value='GHA'>Ghana</SelectItem>
                                 <SelectItem value='TZ'>Tanzania</SelectItem>
@@ -387,7 +388,7 @@ const Pay: React.FC<RoleSelectModalProps> = ({ isOpen, onClose, merchantAddress,
                             value={price.toString()}
                             onChange={(e) => setAmount(Number(e.target.value))}
                             readOnly
-                            className="bg-gray-100"
+                            className="bg-gray-100 text-[#000]"
                         />
                     </div>
                     <div className='space-y-1'>
@@ -396,14 +397,14 @@ const Pay: React.FC<RoleSelectModalProps> = ({ isOpen, onClose, merchantAddress,
                             <SelectTrigger >
                                 <SelectValue placeholder="Currency" />
                             </SelectTrigger>
-                            <SelectContent className='bg-gray-100'>
+                            <SelectContent className='bg-gray-100 text-[#000]'>
                                 <SelectItem value='KES'>KES</SelectItem>
                                 <SelectItem value='GHS'>GHS</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
                     <div className='flex flex-row gap-4 items-center justify-center'>
-                        <button className='w-full bg-[#F09F24] hover:bg-[#363FF9] text-[#000] font-bold p-2 rounded ' onClick={onSubmit} disabled={loading}>
+                        <button className='w-full bg-[#363FF9] hover:bg-[#363FF9] text-[#000] font-bold p-2 rounded ' onClick={onSubmit} disabled={loading}>
                             {loading && <Loader2 className="w-6 h-6 mr-2 animate-spin" />}
                             {loading ? 'Processing...' : 'Pay'}
                         </button>

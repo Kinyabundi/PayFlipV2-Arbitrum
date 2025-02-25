@@ -89,7 +89,7 @@ const Products = () => {
                     </TableHeader>
                     <TableBody>
                         {products.map((product, index) => (
-                            <TableRow key={index} className='hover:bg-gray-200'>
+                            <TableRow key={index} className='hover:bg-gray-500'>
                                 <TableCell>{product.productName}</TableCell>
                                 <TableCell>{product.price}</TableCell>
                                 <TableCell>{product.description}</TableCell>
